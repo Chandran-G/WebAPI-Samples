@@ -32,8 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.1.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -48,17 +60,36 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AutofacContainer.cs" />
+    <Compile Include="ServiceTestModule.cs" />
+    <Compile Include="AccountServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Account.DomainModel\Account.DomainModel.csproj">
+      <Project>{af0a8430-1195-4672-9760-dfb5eb04c523}</Project>
+      <Name>Account.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Account.ServiceLayer.Contract\Account.ServiceLayer.Contract.csproj">
+      <Project>{e1cad30b-6f3b-4b6a-95cf-67110624c1a9}</Project>
+      <Name>Account.ServiceLayer.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Account.ServiceLayer\Account.ServiceLayer.csproj">
+      <Project>{0e5d4ca9-f0b3-4a9c-a1cc-a59f103b2a85}</Project>
+      <Name>Account.ServiceLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccountAPI\Account.API.csproj">
       <Project>{4130816C-E9CA-412E-AFB8-D9A4D2FC1A74}</Project>
       <Name>Account.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccountRepository.Contract\Account.Repository.Contract.csproj">
+      <Project>{17eacab9-ad3d-481d-a5a9-62e3983f2744}</Project>
+      <Name>Account.Repository.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
